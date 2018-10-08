@@ -23,6 +23,9 @@ local function getass(dir, pattern, func)
             result[filename] = getass(filepath, pattern, func)
         end
     end
+    local length = 0
+    for _ in pairs(result) do length = length + 1 end
+    if length == 0 then result = nil end
     return result
 end
 
