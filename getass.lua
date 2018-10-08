@@ -10,11 +10,16 @@ local function getass(dir, pattern, func)
         local filepath = dir.."/"..filename
         filetype = love.filesystem.getInfo(filepath).type
         if filetype == "file" then
-            if string.find(filepath, pattern) ~= nul then
-                s1, s2 = string.find(filename, pattern)
-                result[string.sub(filename, 1, s1 - 1)..string.sub(filename, s2 + 1)] = func(filepath)
+            if string.find(filepath, pattern) ~= nil then
+                local s1, s2 = string.find(filename, pattern)
+                local objectname = string.sub(filename, 1, s1 - 1)..string.sub(filename, s2 + 1)
+                local s1, s2 = string.find(objectname, "%..*$")
+                if s1 ~= nil then
+                    local objectname = string.sub(objectname, 1, s1 - 1)
+                end
+                result[objectname] = func(filepath)
             end
-        elseif filetype == "directory" or filetype == "symlink" then
+        elseif filetype == "directory" then
             result[filename] = getass(filepath, pattern, func)
         end
     end
