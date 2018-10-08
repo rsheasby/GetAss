@@ -13,9 +13,9 @@ local function getass(dir, pattern, func)
             if string.find(filepath, pattern) ~= nil then
                 local s1, s2 = string.find(filename, pattern)
                 local objectname = string.sub(filename, 1, s1 - 1)..string.sub(filename, s2 + 1)
-                local s1, s2 = string.find(objectname, "%..*$")
+                local s1 = string.find(objectname, "%..*$")
                 if s1 ~= nil then
-                    local objectname = string.sub(objectname, 1, s1 - 1)
+                    objectname = string.sub(objectname, 1, s1 - 1)
                 end
                 result[objectname] = func(filepath)
             end
