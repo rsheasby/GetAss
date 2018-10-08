@@ -12,10 +12,10 @@ assets
             ├── sprite2.png
             └── sprite3.png 
 
-Simply invoke GetAss using the following prototype: GetAss(dir, pattern, func) where:
-    "dir" is the path from the root game directory to the assets directory you want to parse,
-    "pattern" is a string.match pattern that tells GetAss which files to add to the table tree, and what to cut out of the filename when adding it to the tree,
-    "func" is the function that GetAss will call for each matched file like so: func(filepath), the return value of which will be added to the tree.
+> Simply invoke GetAss using the following prototype: GetAss(dir, pattern, func) where:
+>     "dir" is the path from the root game directory to the assets directory you want to parse,
+>     "pattern" is a string.match pattern that tells GetAss which files to add to the table tree, and what to cut out of the filename when adding it to the tree,
+>     "func" is the function that GetAss will call for each matched file like so: func(filepath), the return value of which will be added to the tree.
 
 ```lua
 GetAss = require 'getass'
