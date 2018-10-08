@@ -28,4 +28,4 @@ love.graphics.draw(assets.sprites.creatures.human.sprite2)
 love.graphics.draw(assets.sprites.creatures.human.sprite3)
 ```
 
-    **NOTE:** In the interest of keeping the library small and light, it does not have automatic renaming of problematic characters in filenames(spaces, commas, etc...) so you should your assets appropriately. It will, however remove the pattern that you match for and any characters after the first dot it finds(so that it will still work if the pattern is not the file extension).
+> **NOTE:** In the interest of keeping the library small and light, it does not have automatic renaming of problematic characters in filenames(spaces, commas, etc...) so you should your assets appropriately. It will, however remove the pattern that you match for and any characters after the first dot it finds(so that it will still work if the pattern is not the file extension).
