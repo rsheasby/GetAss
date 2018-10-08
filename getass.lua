@@ -8,7 +8,7 @@ local function getass(dir, pattern, func)
     local filenames = love.filesystem.getDirectoryItems(dir)
     for index, filename in ipairs(filenames) do
         local filepath = dir.."/"..filename
-        filetype = love.filesystem.getInfo(filepath).type
+        local filetype = love.filesystem.getInfo(filepath).type
         if filetype == "file" then
             if string.find(filepath, pattern) ~= nil then
                 local s1, s2 = string.find(filename, pattern)
