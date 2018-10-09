@@ -34,8 +34,9 @@ filepaths = GetAss("assets", ".png$")
 -- If you want non-nested assets but you still want a custom function, simple set maketree to false.
 non_nested_assets = GetAss("assets", ".png$", function(filepath) return love.graphics.newImage(filepath) end, false)
 
--- Likewise, if you want the filepaths in a nested table, then you will need to add a basic function.
+-- Likewise, if you want the filepaths in a nested table, then either add a basic function or just use the default and specify maketree. The following 2 lines are equivalent:
 nested_filepaths = GetAss("assets", ".png$", function(filepath) return filepath end)
+nested_filepaths = GetAss("assets", ".png$", nil, true)
 
 -- This library can be used for almost any type of assets including code like so:
 objs = GetAss("src", ".lua$", function(filepath) return love.filesystem.load(filepath)() end, false)
