@@ -3,7 +3,13 @@
 -- This software is released under the MIT License.
 -- https://opensource.org/licenses/MIT
 
-local function getass(dir, pattern, func)
+local function getass(dir, pattern, func, maketree)
+	if pattern == nil then pattern = "^" end
+    if func == nil then
+        func = function(filepath) return filepath end
+        maketree = false
+    end
+	if maketree == nil then maketree = true end
     local result = {}
     local filenames = love.filesystem.getDirectoryItems(dir)
     for index, filename in ipairs(filenames) do
@@ -17,10 +23,19 @@ local function getass(dir, pattern, func)
                 if s1 ~= nil then
                     objectname = string.sub(objectname, 1, s1 - 1)
                 end
-                result[objectname] = func(filepath)
+                if maketree then
+                    result[objectname] = func(filepath)
+                else
+                    table.insert(result, func(filepath))
+                end
             end
         elseif filetype == "directory" then
-            result[filename] = getass(filepath, pattern, func)
+            local deepresult = getass(filepath, pattern, func, maketree)
+			if maketree then
+				result[filename] = deepresult
+			else
+				for k, v in pairs(deepresult) do table.insert(result, v) end
+			end
         end
     end
     local length = 0
