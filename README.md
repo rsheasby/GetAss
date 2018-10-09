@@ -42,3 +42,6 @@ objs = GetAss("src", ".lua$", function(filepath) return love.filesystem.load(fil
 ```
 
 > **NOTE:** In the interest of keeping the library small and light, it does not have automatic renaming of problematic characters in filenames(spaces, commas, etc...) so you should name your assets appropriately. It will, however remove the pattern that you match for and any characters after the first dot it finds(so that it will still work if the pattern is not the file extension).
+
+## License
+This library is licensed under MIT License meaning you are welcome to use it in any project you want and modify it to your heart's content. You need only mention me in the about page/readme/documentation of your project.
